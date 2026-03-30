@@ -291,6 +291,8 @@ stellar_insights_db_pool_active {}\n",
 pub async fn pool_metrics(State(state): State<AppState>) -> impl IntoResponse {
     let metrics = state.db.pool_metrics();
     Json(metrics)
+}
+
 /// GET /api/corridors - List all corridors
 pub async fn list_corridors(
     State(app_state): State<AppState>,
@@ -330,10 +332,6 @@ pub struct UpdateCorridorMetricsFromTxns {
     pub transactions: Vec<CorridorTransactionDto>,
 }
 
-/// Database pool metrics endpoint
-pub async fn pool_metrics(State(state): State<AppState>) -> impl IntoResponse {
-    let metrics = state.db.pool_metrics();
-    Json(metrics)
 /// PUT /api/corridors/:id/metrics-from-transactions - Placeholder for updating metrics from batch transactions
 pub async fn update_corridor_metrics_from_transactions(
     State(_app_state): State<AppState>,
